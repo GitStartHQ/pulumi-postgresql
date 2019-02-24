@@ -24,10 +24,9 @@ To use from Go, use `go get` to grab the latest version of the library
     
     
 ### Roadmap
-
-[x] Initial types for Database, Schema, Extensions & Roles
-[ ] Typed support for Roles
-[ ] Typed support for Policies & Schema
+- [x] Initial types for Database, Schema, Extensions & Roles
+- [ ] Typed support for Roles
+- [ ] Typed support for Policies & Schema
 
 ## Shameless Plug
 
