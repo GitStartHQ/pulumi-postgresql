@@ -15,13 +15,13 @@
 package main
 
 import (
-	"github.com/pulumi/pulumi-terraform/pkg/tfgen"
+	"github.com/pulumi/pulumi-terraform/pkg/tfbridge"
 
-	xyz "github.com/pulumi/pulumi-xyz"
-	"github.com/pulumi/pulumi-xyz/pkg/version"
+	postgresql "github.com/murcul/pulumi-postgresql"
+	"github.com/murcul/pulumi-postgresql/pkg/version"
 )
 
 func main() {
 	// Modify the path to point to the new provider
-	tfgen.Main("xyz", version.Version, xyz.Provider())
+	tfbridge.Main("postgresql", version.Version, postgresql.Provider())
 }
