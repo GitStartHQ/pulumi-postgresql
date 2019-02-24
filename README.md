@@ -1,42 +1,6 @@
-# Terraform Bridge Provider Boilerplate
+# Pulumi PostgreSQL Provider
 
-This repository contains boilerplate code for building a new Pulumi provider which wraps an existing
-Terraform provider.
-
-Modify this README to describe:
-
-- The type of resources the provider manages
-- Add a build status image from Travis at the top of the README
-- Update package names in the information below
-- Add any important documentation of concepts (e.g. the "serverless" components in the AWS provider).
-
-## Creating a Pulumi Terraform Bridge Provider
-
-First, clone this repo with the name of the desired provider in place of `postgresql`:
-
-```
-git clone https://github.com/pulumi/pulumi-tf-provider-boilerplate pulumi-postgresql
-```
-
-Next, replace references to `postgresql` with the name of your provider:
-
-- Search/replace the string `postgresql` with the name of your provider throughout this repo
-- Rename the `cmd/pulumi-{resource,tfgen}-postgresql` directories to match the provider name
-
-> Note: If the name of the desired Pulumi provider differs from the name of the Terraform provider, you will need to carefully distinguish between the references - see https://github.com/pulumi/pulumi-azure for an example.
-
-Lock in dependency versions:
-
-- `go get github.com/pulumi/scripts/govendor-override`
-- Update the version number of the Terraform provider in `Gopkg.template.toml` to match the latest available version.
-- `govendor-override < Gopkg.template.toml > Gopkg.toml`
-- `make ensure`
-
-Finally, build the provider:
-
-- Edit `resources.go` to map each resource, and specify provider information
-- Enumerate any examples in `examples/examples_test.go`
-- `make`
+This is an implementation to build a PostgreSQL provider for Pulumi. It is build on top of the PostgreSQL terraform provider ported over to Pulumi through the [Pulumi Terraform Bridge](https://github.com/pulumi/pulumi-tf-provider-boilerplate)
 
 ## Installing
 
@@ -46,17 +10,11 @@ This package is available in many languages in the standard packaging formats.
 
 To use from JavaScript or TypeScript in Node.js, install using either `npm`:
 
-    $ npm install @pulumi/x
+    $ npm install @murcul/pulumi-postgresql
 
 or `yarn`:
 
-    $ yarn add @pulumi/x
-
-### Python
-
-To use from Python, install using `pip`:
-
-    $ pip install pulumi_x
+    $ yarn add @murcul/pulumi-postgresql
 
 ### Go
 
@@ -64,8 +22,6 @@ To use from Go, use `go get` to grab the latest version of the library
 
     $ go get github.com/murcul/pulumi-postgresql/sdk/go/...
 
-## Reference
+## Shameless Plug
 
-For detailed reference documentation, please visit [the API docs][1].
-
-[1]: https://pulumi.io/reference/pkg/nodejs/@pulumi/x/index.html
+Made with <3 at [Murcul](https://www.murcul.com)

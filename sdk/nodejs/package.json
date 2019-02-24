@@ -1,0 +1,26 @@
+{
+  "name": "@murcul/pulumi-postgresql",
+  "version": "${VERSION}",
+  "description": "A Pulumi package for creating and managing postgresql cloud resources.",
+  "keywords": [
+    "pulumi",
+    "postgresql"
+  ],
+  "homepage": "https://murcul.com",
+  "repository": "https://github.com/murcul/pulumi-postgresql",
+  "license": "Apache-2.0",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@pulumi/pulumi": "latest"
+  },
+  "devDependencies": {
+    "@types/mime": "^2.0.0",
+    "@types/node": "^8.0.25",
+    "typescript": "^3.0.0"
+  },
+  "pulumi": {
+    "resource": true
+  }
+}

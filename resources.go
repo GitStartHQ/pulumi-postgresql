@@ -15,56 +15,64 @@
 package postgresql
 
 import (
-	"unicode"
-
 	"github.com/hashicorp/terraform/helper/schema"
 	"github.com/hashicorp/terraform/terraform"
 	"github.com/pulumi/pulumi-terraform/pkg/tfbridge"
 	"github.com/pulumi/pulumi/pkg/resource"
-	"github.com/pulumi/pulumi/pkg/tokens"
 	"github.com/terraform-providers/terraform-provider-postgresql/postgresql"
 )
 
 // all of the token components used below.
 const (
-	// packages:
-	mainPkg = "postgresql"
-	// modules:
-	mainMod = "index" // the y module
+// packages:
+// mainPkg = "postgresql"
+// modules:
+// mainMod = "index" // the y module
 )
 
 // makeMember manufactures a type token for the package and the given module and type.
+/*
 func makeMember(mod string, mem string) tokens.ModuleMember {
 	return tokens.ModuleMember(mainPkg + ":" + mod + ":" + mem)
 }
+*/
 
 // makeType manufactures a type token for the package and the given module and type.
+/*
 func makeType(mod string, typ string) tokens.Type {
 	return tokens.Type(makeMember(mod, typ))
 }
+*/
 
 // makeDataSource manufactures a standard resource token given a module and resource name.  It
 // automatically uses the main package and names the file by simply lower casing the data source's
 // first character.
+/*
 func makeDataSource(mod string, res string) tokens.ModuleMember {
 	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
 	return makeMember(mod+"/"+fn, res)
 }
+*/
 
 // makeResource manufactures a standard resource token given a module and resource name.  It
 // automatically uses the main package and names the file by simply lower casing the resource's
 // first character.
+/*
 func makeResource(mod string, res string) tokens.Type {
 	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
 	return makeType(mod+"/"+fn, res)
 }
+*/
 
 // boolRef returns a reference to the bool argument.
+/*
 func boolRef(b bool) *bool {
 	return &b
 }
+*/
 
 // stringValue gets a string value from a property map if present, else ""
+/*
 func stringValue(vars resource.PropertyMap, prop resource.PropertyKey) string {
 	val, ok := vars[prop]
 	if ok && val.IsString() {
@@ -72,6 +80,7 @@ func stringValue(vars resource.PropertyMap, prop resource.PropertyKey) string {
 	}
 	return ""
 }
+*/
 
 // preConfigureCallback is called before the providerConfigure function of the underlying provider.
 // It should validate that the provider can be configured, and provide actionable errors in the case
@@ -82,7 +91,7 @@ func preConfigureCallback(vars resource.PropertyMap, c *terraform.ResourceConfig
 }
 
 // managedByPulumi is a default used for some managed resources, in the absence of something more meaningful.
-var managedByPulumi = &tfbridge.DefaultInfo{Value: "Managed by Pulumi"}
+// var managedByPulumi = &tfbridge.DefaultInfo{Value: "Managed by Pulumi"}
 
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
@@ -96,7 +105,7 @@ func Provider() tfbridge.ProviderInfo {
 		Description: "A Pulumi package for creating and managing postgresql cloud resources.",
 		Keywords:    []string{"pulumi", "postgresql"},
 		License:     "Apache-2.0",
-		Homepage:    "https://pulumi.io",
+		Homepage:    "https://murcul.com",
 		Repository:  "https://github.com/murcul/pulumi-postgresql",
 		Config:      map[string]*tfbridge.SchemaInfo{
 			// Add any required configuration here, or remove the example below if
