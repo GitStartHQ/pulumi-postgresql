@@ -21,6 +21,13 @@ or `yarn`:
 To use from Go, use `go get` to grab the latest version of the library
 
     $ go get github.com/murcul/pulumi-postgresql/sdk/go/...
+    
+    
+### Roadmap
+
+[x] Initial types for Database, Schema, Extensions & Roles
+[ ] Typed support for Roles
+[ ] Typed support for Policies & Schema
 
 ## Shameless Plug
 
