@@ -2,8 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 // Export members:
+export * from "./database";
 export * from "./provider";
 
 // Export sub-modules:
 import * as config from "./config/index";
-export {config};
+import * as extension from "./extension/index";
+import * as role from "./role/index";
+import * as schema from "./schema/index";
+export {config, extension, role, schema};

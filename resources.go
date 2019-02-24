@@ -15,34 +15,38 @@
 package postgresql
 
 import (
+	"unicode"
+
 	"github.com/hashicorp/terraform/helper/schema"
 	"github.com/hashicorp/terraform/terraform"
 	"github.com/pulumi/pulumi-terraform/pkg/tfbridge"
 	"github.com/pulumi/pulumi/pkg/resource"
+	"github.com/pulumi/pulumi/pkg/tokens"
 	"github.com/terraform-providers/terraform-provider-postgresql/postgresql"
 )
 
 // all of the token components used below.
 const (
-// packages:
-// mainPkg = "postgresql"
-// modules:
-// mainMod = "index" // the y module
+	// packages:
+	mainPkg = "postgresql"
+	// modules:
+	mainMod      = "index"
+	roleMod      = "role"
+	extensionMod = "extension"
+	schemaMod    = "schema"
 )
 
 // makeMember manufactures a type token for the package and the given module and type.
-/*
+
 func makeMember(mod string, mem string) tokens.ModuleMember {
 	return tokens.ModuleMember(mainPkg + ":" + mod + ":" + mem)
 }
-*/
 
 // makeType manufactures a type token for the package and the given module and type.
-/*
+
 func makeType(mod string, typ string) tokens.Type {
 	return tokens.Type(makeMember(mod, typ))
 }
-*/
 
 // makeDataSource manufactures a standard resource token given a module and resource name.  It
 // automatically uses the main package and names the file by simply lower casing the data source's
@@ -57,12 +61,11 @@ func makeDataSource(mod string, res string) tokens.ModuleMember {
 // makeResource manufactures a standard resource token given a module and resource name.  It
 // automatically uses the main package and names the file by simply lower casing the resource's
 // first character.
-/*
+
 func makeResource(mod string, res string) tokens.Type {
 	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
 	return makeType(mod+"/"+fn, res)
 }
-*/
 
 // boolRef returns a reference to the bool argument.
 /*
@@ -118,9 +121,37 @@ func Provider() tfbridge.ProviderInfo {
 			// },
 		},
 		PreConfigureCallback: preConfigureCallback,
-		Resources:            map[string]*tfbridge.ResourceInfo{
+		Resources: map[string]*tfbridge.ResourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi type. An example
 			// is below.
+			"postgresql_database": {
+				Tok: makeResource(mainMod, "Database"),
+
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"name": tfbridge.AutoName("name", 40),
+				},
+			},
+			"postgresql_schema": {
+				Tok: makeResource(schemaMod, "Schema"),
+
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"name": tfbridge.AutoName("name", 40),
+				},
+			},
+			"postgresql_role": {
+				Tok: makeResource(roleMod, "Role"),
+
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"name": tfbridge.AutoName("name", 40),
+				},
+			},
+			"postgresql_extension": {
+				Tok: makeResource(extensionMod, "Extension"),
+
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"name": tfbridge.AutoName("name", 40),
+				},
+			},
 			// "aws_acm_certificate": {
 			// 	Tok: makeResource(mainMod, "Certificate"),
 			// 	Fields: map[string]*tfbridge.SchemaInfo{

@@ -10,8 +10,15 @@
     "files": [
         "config/index.ts",
         "config/vars.ts",
+        "database.ts",
+        "extension/extension.ts",
+        "extension/index.ts",
         "index.ts",
         "provider.ts",
+        "role/index.ts",
+        "role/role.ts",
+        "schema/index.ts",
+        "schema/schema.ts",
         "utilities.ts"
     ]
 }

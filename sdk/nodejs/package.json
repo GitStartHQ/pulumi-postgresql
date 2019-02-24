@@ -1,6 +1,6 @@
 {
   "name": "@murcul/pulumi-postgresql",
-  "version": "v0.0.2",
+  "version": "0.0.3",
   "description": "A Pulumi package for creating and managing postgresql cloud resources.",
   "keywords": [
     "pulumi",
